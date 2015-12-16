@@ -1,0 +1,22 @@
+{
+  "name": "simple-logger",
+  "version": "0.1.0",
+  "description": "Simple way to pipe stdout and stderr to while checking permissions",
+  "main": "simple-logger.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hartclark/simple-logger.git"
+  },
+  "keywords": [
+    "log"
+  ],
+  "author": "Clark Inada",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hartclark/simple-logger/issues"
+  },
+  "homepage": "https://github.com/hartclark/simple-logger#readme"
+}
