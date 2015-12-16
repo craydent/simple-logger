@@ -1,6 +1,6 @@
 {
-  "name": "simple-logger",
-  "version": "0.1.0",
+  "name": "the-simple-logger",
+  "version": "0.2.2",
   "description": "Simple way to pipe stdout and stderr to while checking permissions",
   "main": "simple-logger.js",
   "scripts": {

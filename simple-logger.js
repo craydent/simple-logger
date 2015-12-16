@@ -16,6 +16,7 @@ function simpleLogger(/*proc, logFiles OR logFiles*/) {
 	self.addFiles = addFiles.bind(self);
 
 	logFiles && self.addFiles(logFiles);
+	self.setProcess = function (proc){ self.proc = proc; };
 
 	//return self;
 }
@@ -24,8 +25,8 @@ function addFiles (options) {
 		proc = self.proc,
 		logFiles = options,
 		pipes = {stderr:1,stdout:1},
-		fs = require('fs'),
-		failedLogs = [];
+		fs = require('fs');
+
 	if (options.constructor == Object) {
 		logFiles = options.files;
 		pipes = options.pipes || pipes;
@@ -36,14 +37,25 @@ function addFiles (options) {
 
 	// retrieve file permissions to the syslog and check permissions
 	for (var i = 0, len = logFiles.length; i < len; i++) {
-		if (!logFiles[i]) { continue; }
-		try { fs.accessSync (logFiles[i], fs.W_OK);} catch(e){ self.emit('access_error', {err: e, file:logFiles[i]}); continue; }
+		var logFile = logFiles[i], foptions;
+		if (!logFile) { continue; }
+		if (logFile.constructor == Object) {
+			foptions = logFile.options;
+			logFile = logFile.file;
+		}
+		try {
+			fs.accessSync (logFile, fs.W_OK);
+		} catch (e) {
+			self.emit('access_error', {err: e, file: logFile});
+			continue;
+		}
 
-		var logfile = !noAccessTolog && fs.createWriteStream(logFiles[i]);
+		logFile = fs.createWriteStream(logFile, foptions);
 
-		if (logfile) {
-			pipes.stdout && proc.stdout.pipe(logfile);
-			pipes.stderr && proc.stderr.pipe(logfile);
+
+		if (logFile) {
+			pipes.stdout && proc.stdout.pipe(logFile);
+			pipes.stderr && proc.stderr.pipe(logFile);
 		}
 	}
 }
