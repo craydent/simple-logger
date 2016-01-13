@@ -31,7 +31,7 @@ function addFiles (options) {
 		logFiles = options.files;
 		pipes = options.pipes || pipes;
 	}
-	if (logFiles.constructor == String) {
+	if (logFiles.constructor != Array) {
 		logFiles = [logFiles];
 	}
 
