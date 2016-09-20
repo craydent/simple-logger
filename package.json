@@ -1,6 +1,6 @@
 {
   "name": "the-simple-logger",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Simple way to pipe stdout and stderr to while checking permissions",
   "main": "simple-logger.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hartclark/simple-logger.git"
+    "url": "git+https://github.com/craydent/simple-logger.git"
   },
   "keywords": [
     "log"
@@ -16,7 +16,10 @@
   "author": "Clark Inada",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hartclark/simple-logger/issues"
+    "url": "https://github.com/craydent/simple-logger/issues"
   },
-  "homepage": "https://github.com/hartclark/simple-logger#readme"
+  "dependencies": {
+    "craydent": "^0.6.14"
+  },
+  "homepage": "https://github.com/craydent/simple-logger#readme"
 }
