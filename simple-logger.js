@@ -72,4 +72,5 @@ function addFiles (options) {
 	});
 }
 util.inherits(SimpleLogger, EventEmitter);
+SimpleLogger.VERSION = require('./package.json').version;
 module.exports = SimpleLogger;
